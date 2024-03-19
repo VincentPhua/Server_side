@@ -1,0 +1,10 @@
+assignment_db
+
+Table: staff
+
+Attribute:
+1) staff_id int 11 Primary Key
+2) staff_name varchar 50
+3) staff_email varchar 50
+4) password varchar 50
+5) reg_date datetime 
