@@ -1,3 +1,4 @@
+/* Login.php */
 /* Custom Styles */
 :root {
     --custom-text-dark: hsl(240, 54%, 15%);
@@ -165,4 +166,67 @@ footer {
 p {
     text-align: center;
     margin-top: 20px;
+}
+
+/* staff.php */
+
+h1.staff-page {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.container {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.card-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Adjust the space between cards */
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 40px; /* Increased padding */
+    width: 400px; /* Increased width */
+}
+
+.card h2 {
+    color: #333;
+}
+
+.card p {
+    color: #666;
+}
+
+.card a {
+    display: block;
+    color: #007bff;
+    text-decoration: none;
+    margin-top: 20px; /* Increased margin */
+}
+
+.card a:hover {
+    text-decoration: underline;
+}
+
+.logout-link {
+    text-align: center;
+    margin-top: 30px; /* Adjust as needed */
+}
+
+.logout-link button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.logout-link button:hover {
+    background-color: #0056b3;
 }
