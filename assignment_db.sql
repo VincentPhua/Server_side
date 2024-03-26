@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 20, 2024 at 02:48 PM
+-- Generation Time: Mar 26, 2024 at 06:28 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -24,16 +24,41 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orders`
+-- Table structure for table `order`
 --
 
-CREATE TABLE `orders` (
+CREATE TABLE `order` (
   `order_id` int(11) NOT NULL,
-  `order_addr` varchar(255) NOT NULL,
-  `order_description` varchar(255) NOT NULL,
+  `receiver_name` varchar(50) NOT NULL,
+  `receiver_email` varchar(50) NOT NULL,
+  `receiver_phone` varchar(15) NOT NULL,
+  `delivery_addr` varchar(255) NOT NULL,
+  `order_desc` varchar(255) NOT NULL,
   `order_time` datetime NOT NULL,
+  `payment_method` int(2) NOT NULL,
   `product_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `payment_method`
+--
+
+CREATE TABLE `payment_method` (
+  `method_id` int(3) NOT NULL,
+  `method_name` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `payment_method`
+--
+
+INSERT INTO `payment_method` (`method_id`, `method_name`) VALUES
+(1, 'Cash'),
+(2, 'Credit Card'),
+(3, 'Online Banking'),
+(4, 'E-Wallet');
 
 -- --------------------------------------------------------
 
@@ -45,7 +70,7 @@ CREATE TABLE `product` (
   `product_id` int(11) NOT NULL,
   `product_name` varchar(255) NOT NULL,
   `price` decimal(10,2) NOT NULL,
-  `quatity` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
   `date_created` datetime NOT NULL,
   `submittedby` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -76,11 +101,18 @@ INSERT INTO `staff` (`staff_id`, `staff_name`, `staff_email`, `password`, `reg_d
 --
 
 --
--- Indexes for table `orders`
+-- Indexes for table `order`
 --
-ALTER TABLE `orders`
+ALTER TABLE `order`
   ADD PRIMARY KEY (`order_id`),
-  ADD KEY `product_id` (`product_id`);
+  ADD KEY `product_id` (`product_id`),
+  ADD KEY `payment_method` (`payment_method`);
+
+--
+-- Indexes for table `payment_method`
+--
+ALTER TABLE `payment_method`
+  ADD PRIMARY KEY (`method_id`);
 
 --
 -- Indexes for table `product`
@@ -99,16 +131,22 @@ ALTER TABLE `staff`
 --
 
 --
--- AUTO_INCREMENT for table `orders`
+-- AUTO_INCREMENT for table `order`
 --
-ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `order`
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- AUTO_INCREMENT for table `payment_method`
+--
+ALTER TABLE `payment_method`
+  MODIFY `method_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `staff`
@@ -121,10 +159,11 @@ ALTER TABLE `staff`
 --
 
 --
--- Constraints for table `orders`
+-- Constraints for table `order`
 --
-ALTER TABLE `orders`
-  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE CASCADE;
+ALTER TABLE `order`
+  ADD CONSTRAINT `order_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `order_ibfk_2` FOREIGN KEY (`payment_method`) REFERENCES `payment_method` (`method_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
