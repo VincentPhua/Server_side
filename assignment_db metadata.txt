@@ -1,29 +1,39 @@
 assignment_db
 
-Table: staff
+Table: order
 
 Attribute:
-1) staff_id int 11 Primary Key
-2) staff_name varchar 50
-3) staff_email varchar 50
-4) password varchar 50
-5) reg_date datetime 
+1) order_id INT 11 PRIMARY KEY
+2) receiver_name VARCHAR(50)
+3) receiver_email VARCHAR(50)
+4) receiver_phone VARCHAR(15)
+5) delivery_addr VARCHAR(255)
+6) order_description VARCHAR(255)
+7) order_time DATETIME
+8) payment_method INT(2) FOREIGN KEY
+9) product_id INT(11) FOREIGN KEY
 
-Table: orders
+Table: payment_method
 
 Attribute:
-1) order_id int 11 Primary Key
-2) order_addr varchar 255 
-3) order_description varchar 255
-4) order_time datetime
-5) product_id int 11 Foreign Key
+1) method_id INT(3) PRIMARY KEY
+2) method_name VARCHAR(30)
 
 Table: product
 
 Attribute:
-1) product_id int 11 Primary Key
-2) product_name varchar 255
-3) price varchar decimal (10,2)
-4) quantity int 11
-5) date_created datetime
-6) submittedby varchar 50
+1) product_id INT(11) PRIMARY KEY
+2) product_name VARCHAR(255)
+3) price varchar DECIMAL(10,2)
+4) quantity INT(11)
+5) date_created DATETIME
+6) submittedby VARCHAR(50)
+
+Table: staff
+
+Attribute:
+1) staff_id INT(11) PRIMARY KEY
+2) staff_name VARCHAR(50)
+3) staff_email VARCHAR(50)
+4) password VARCHAR(50)
+5) reg_date DATETIME
