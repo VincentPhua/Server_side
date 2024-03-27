@@ -13,11 +13,6 @@ $staffName = $_SESSION['staff_name'];
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
-<head>
-    <title>Staff Landing Page</title>
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-
 <body>
     <div class="container">
         <h1 class="staff-page">Welcome,

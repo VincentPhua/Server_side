@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 20, 2024 at 02:48 PM
+-- Generation Time: Mar 27, 2024 at 04:36 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -44,11 +44,23 @@ CREATE TABLE `orders` (
 CREATE TABLE `product` (
   `product_id` int(11) NOT NULL,
   `product_name` varchar(255) NOT NULL,
+  `image_name` varchar(255) NOT NULL,
   `price` decimal(10,2) NOT NULL,
-  `quatity` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
   `date_created` datetime NOT NULL,
   `submittedby` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`product_id`, `product_name`, `image_name`, `price`, `quantity`, `date_created`, `submittedby`) VALUES
+(4, 'Phone Case 1', 'uploads/I1.png', 12.00, 3, '0000-00-00 00:00:00', ''),
+(5, 'Phone Case 2', 'uploads/I1.png', 152.00, 3, '2024-03-27 16:12:56', ''),
+(6, 'Phone Case 2', 'uploads/I1.png', 152.00, 3, '2024-03-27 16:13:14', 'Vincent'),
+(7, 'Phone Case 2', 'uploads/Blank diagram.png', 12.00, 3, '2024-03-27 16:27:57', 'Vincent'),
+(8, 'Phone Case 2', 'uploads/Blank diagram.png', 12.00, 3, '2024-03-27 16:28:51', 'Vincent');
 
 -- --------------------------------------------------------
 
@@ -108,7 +120,7 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `staff`
