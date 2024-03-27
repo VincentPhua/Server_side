@@ -51,7 +51,7 @@ session_start();
         } else {
             echo "<div class='form'>
 				<h3>Username/password is incorrect.</h3>
-				<br/>Click here to <a href='login2.php'>Login</a></div>";
+				<br/>Click here to <a href='login.php'>Login</a></div>";
         }
     } else {
         ?>
@@ -92,7 +92,7 @@ session_start();
                     </form> <!-- Closing form element -->
                     <p></p>
                     <p></p>
-                    <p>Not registered yet? <a href='registration.php'>Register Here</a></p>
+                    <p>Go Back to Main Page? <a href='index.html.php'>Main Page</a></p>
                 </div>
             </div>
         </section>
