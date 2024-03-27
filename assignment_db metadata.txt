@@ -18,12 +18,14 @@ Attribute:
 4) order_time datetime
 5) product_id int 11 Foreign Key
 
-Table: product
+Table: products
 
 Attribute:
 1) product_id int 11 Primary Key
 2) product_name varchar 255
-3) price varchar decimal (10,2)
-4) quantity int 11
-5) date_created datetime
-6) submittedby varchar 50
+3) description text
+4) price varchar decimal (10,2)
+5) quantity int 11
+6) image_name varchar 255
+7) date_created datetime
+8) submittedby varchar 50

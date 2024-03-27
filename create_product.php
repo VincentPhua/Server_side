@@ -10,6 +10,7 @@ $status = '';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Retrieve product info from form
     $product_name = $_POST['product_name'];
+    $description = $_POST['description'];
     $price = $_POST['price'];
     $quantity = $_POST['quantity'];
     $date_record = date("Y-m-d H:i:s");
@@ -21,16 +22,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
 
     // Check if image file is a valid format
-    if ($imageFileType != "jpg" && $imageFileType != "png") {
+    if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
         $status = "Sorry, only JPG and PNG files are allowed.";
     } else {
         // Move uploaded file to destination directory
         if (move_uploaded_file($_FILES["image"]["tmp_name"], $targetFile)) {
-            $image_name = $targetFile;
+            $image_name = basename($_FILES["image"]["name"]);
 
             // Insert product data into database
-            $ins_query = "INSERT INTO product (product_name, image_name, price, quantity, date_created, submittedby) 
-                          VALUES ('$product_name', '$image_name', '$price', '$quantity', '$date_record', '$submittedby')";
+            $ins_query = "INSERT INTO products (product_name, description, image_name, price, quantity, date_created, submittedby) 
+                          VALUES ('$product_name','$description', '$image_name', '$price', '$quantity', '$date_record', '$submittedby')";
             mysqli_query($con, $ins_query) or die (mysqli_error($con));
 
             // Status message
@@ -56,16 +57,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="create-product-container">
         <h2 class="create-product-title">Create Product</h2>
         <form class="create-product-form" method="post" enctype="multipart/form-data">
-        <label for="product_name">Product Name:</label>
+            <label for="product_name">Product Name:</label>
             <input type="text" name="product_name" id="product_name" placeholder="Product Name" required>
+            <label for="description">Description:</label>
+            <input type="text" name="description" id="description" placeholder="Description" required>
             <label for="image">Image:</label>
             <input type="file" name="image" id="image" accept="image/jpeg, image/png" required>
             <label for="price">Price:</label>
-            <input type="number" name="price" id="price" placeholder="Price" required>
+            <input type="number" name="price" step="0.01" min="0" id="price" placeholder="Price" required>
             <label for="quantity">Quantity:</label>
             <input type="number" name="quantity" id="quantity" placeholder="Quantity" required>
             <input type="submit" value="Submit">
-            <p class="create-product-status"><?php echo $status; ?></p>
+            <p class="create-product-status">
+                <?php echo $status; ?>
+            </p>
         </form>
     </div>
 </body>

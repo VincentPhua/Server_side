@@ -45,7 +45,8 @@ require ('database.php');
                         <th><strong>No.</strong></th>
                         <th><strong>Product Image</strong></th>
                         <th><strong>Product Name</strong></th>
-                        <th><strong>Product Price</strong></th>
+                        <th><strong>Description</strong></th>
+                        <th><strong>Price</strong></th>
                         <th><strong>Quantity</strong></th>
                         <th><strong>Date and Time Recorded</strong></th>
                         <th><strong>Edit</strong></th>
@@ -57,7 +58,7 @@ require ('database.php');
                     // Setup count variable
                     $count = 1;
                     // Select and execute query
-                    $sel_query = "SELECT * FROM product ORDER BY product_id;";
+                    $sel_query = "SELECT * FROM products ORDER BY product_id;";
                     $result = mysqli_query($con, $sel_query);
                     // For price
                     $currencySymbol = "RM";
@@ -70,10 +71,13 @@ require ('database.php');
                                 <?php echo $count; ?>
                             </td>
                             <td align="center">
-                                <?php echo "<img src='" . $row["image_name"] . "' alt='Product Image' class='product-image'>"; ?>
+                                <?php echo "<img src='uploads/" . $row["image_name"] . "' alt='Product Image' class='product-image'>"; ?>
                             </td>
                             <td align="center">
                                 <?php echo $row["product_name"]; ?>
+                            </td>
+                            <td align="center">
+                                <?php echo $row["description"]; ?>
                             </td>
                             <td align="center">
                                 <?php echo $currencySymbol . $row["price"]; ?>
