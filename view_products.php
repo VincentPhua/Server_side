@@ -70,7 +70,7 @@ require ('database.php');
                                 <?php echo $count; ?>
                             </td>
                             <td align="center">
-                                <?php echo "<img src='" . $row["image_name"] . "' alt='Product Image' class='product-image'>"; ?>
+                                <?php echo "<img src='uploads/" . $row["image_name"] . "' alt='Product Image' class='product-image'>"; ?>
                             </td>
                             <td align="center">
                                 <?php echo $row["product_name"]; ?>
