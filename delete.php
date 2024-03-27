@@ -4,13 +4,13 @@ require ('database.php');
 // Get product id
 $id = $_GET['id'];
 // Retrieve image file name from the database
-$query = "SELECT image_name FROM product WHERE product_id = $id";
+$query = "SELECT image_name FROM products WHERE product_id = $id";
 $result = mysqli_query($con, $query);
 $row = mysqli_fetch_assoc($result);
 $imageFileName = $row['image_name'];
 
 // Delete record from DB
-$query = "DELETE FROM product WHERE product_id = $id";
+$query = "DELETE FROM products WHERE product_id = $id";
 $result = mysqli_query($con, $query) or die (mysqli_error($con));
 
 // Delete image file from the upload folder
