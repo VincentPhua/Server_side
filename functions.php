@@ -28,7 +28,7 @@ echo <<<EOT
 	<head>
 		<meta charset="utf-8">
 		<title>$title</title>
-		<link href="styling.css" rel="stylesheet" type="text/css">
+		<link href="main.css" rel="stylesheet" type="text/css">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
 	</head>
 	<body>
