@@ -1,6 +1,6 @@
 <?php
 // Get the 3 most latest added products
-$stmt = $pdo->prepare('SELECT * FROM products ORDER BY date_added DESC LIMIT 3');
+$stmt = $pdo->prepare('SELECT * FROM products ORDER BY date_created DESC LIMIT 3');
 $stmt->execute();
 $latest_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -17,9 +17,9 @@ $latest_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     <div class="products">
         <?php foreach ($latest_products as $product): ?>
-        <a href="index.php?page=product&id=<?=$product['id']?>" class="product">
-            <img src="imgs/<?=$product['img']?>" width="300" height="300" alt="<?=$product['name']?>">
-            <span class="name"><?=$product['name']?></span>
+        <a href="index.php?page=product&id=<?=$product['product_id']?>" class="product">
+            <img src="imgs/<?=$product['image_name']?>" width="300" height="300" alt="<?=$product['product_name']?>">
+            <span class="name"><?=$product['product_name']?></span>
             <span class="price">
                 &dollar;<?=$product['price']?>
                 <?php if ($product['rrp'] > 0): ?>

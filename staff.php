@@ -5,7 +5,7 @@ include ("database.php");
 // Get the staff name from the session
 $staffName = $_SESSION['staff_name'];
 // Fetch sales data from the database
-$salesQuery = "SELECT DATE(order_time) AS order_date, SUM(total_price) AS total_sales 
+$salesQuery = "SELECT DATE(order_time) AS order_date, SUM(subtotal) AS total_sales 
                FROM orders 
                GROUP BY order_date";
 $salesResult = mysqli_query($con, $salesQuery);
