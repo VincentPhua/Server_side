@@ -1,6 +1,5 @@
 <?php
 ob_start();
-session_start();
 ?>
 
 <!DOCTYPE html>
@@ -92,7 +91,7 @@ session_start();
                     </form> <!-- Closing form element -->
                     <p></p>
                     <p></p>
-                    <p>Go Back to Main Page? <a href='index.html.php'>Main Page</a></p>
+                    <p>Go Back to Main Page? <a href='index.php'>Main Page</a></p>
                 </div>
             </div>
         </section>

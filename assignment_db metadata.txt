@@ -13,10 +13,19 @@ Table: orders
 
 Attribute:
 1) order_id int 11 Primary Key
-2) order_addr varchar 255 
-3) order_description varchar 255
-4) order_time datetime
-5) product_id int 11 Foreign Key
+2) receiver_name varchar 50
+3) receiver_email varchar 50
+4) receiver_phone varchar 20
+5) delivery_addr varchar 255 
+6) subtotal decimal (7,2)
+7) order_time datetime
+8) payment_method int 3 Foreign Key
+
+Table: payment_method
+
+Attribute:
+1) method_id int 3 Primary Key
+2) method_name varchar 30
 
 Table: products
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 28, 2024 at 09:45 AM
+-- Generation Time: Mar 28, 2024 at 03:17 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -29,12 +29,35 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `orders` (
   `order_id` int(11) NOT NULL,
-  `order_addr` varchar(255) NOT NULL,
-  `order_description` varchar(255) NOT NULL,
-  `total_price` decimal(7,2) NOT NULL,
+  `receiver_name` varchar(50) NOT NULL,
+  `receiver_email` varchar(50) NOT NULL,
+  `receiver_phone` varchar(20) NOT NULL,
+  `delivery_addr` varchar(255) NOT NULL,
+  `subtotal` decimal(7,2) NOT NULL,
   `order_time` datetime NOT NULL,
-  `product_id` int(11) NOT NULL
+  `payment_method` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `payment_method`
+--
+
+CREATE TABLE `payment_method` (
+  `method_id` int(3) NOT NULL,
+  `method_name` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `payment_method`
+--
+
+INSERT INTO `payment_method` (`method_id`, `method_name`) VALUES
+(1, 'Cash'),
+(2, 'Credit Card'),
+(3, 'Online Banking'),
+(4, 'E-Wallet');
 
 -- --------------------------------------------------------
 
@@ -58,9 +81,9 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`product_id`, `product_name`, `description`, `price`, `quantity`, `image_name`, `date_created`, `submittedby`) VALUES
-(20, 'Phone Case 1', 'Phone case', 12.50, 2, 'PhoneCase1.jpeg', '2024-03-28 16:27:34', 'Vincent'),
-(21, 'Phone Case 2', 'Phone case', 12.50, 5, 'PhoneCase2.jpeg', '2024-03-28 16:27:59', 'Vincent'),
-(22, 'Phone Case 3', 'Phone case', 12.50, 6, 'PhoneCase3.jpeg', '2024-03-28 16:28:13', 'Vincent');
+(20, 'Phone Case 1', 'Phone case', 12.50, 100, 'PhoneCase1.jpeg', '2024-03-28 16:27:34', 'Vincent'),
+(21, 'Phone Case 2', 'Phone case', 12.50, 100, 'PhoneCase2.jpeg', '2024-03-28 16:27:59', 'Vincent'),
+(22, 'Phone Case 3', 'Phone case', 12.50, 100, 'PhoneCase3.jpeg', '2024-03-28 16:28:13', 'Vincent');
 
 -- --------------------------------------------------------
 
@@ -92,7 +115,13 @@ INSERT INTO `staff` (`staff_id`, `staff_name`, `staff_email`, `password`, `reg_d
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`order_id`),
-  ADD KEY `orders_ibfk_1` (`product_id`);
+  ADD KEY `payment_method` (`payment_method`);
+
+--
+-- Indexes for table `payment_method`
+--
+ALTER TABLE `payment_method`
+  ADD PRIMARY KEY (`method_id`);
 
 --
 -- Indexes for table `products`
@@ -114,7 +143,13 @@ ALTER TABLE `staff`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT for table `payment_method`
+--
+ALTER TABLE `payment_method`
+  MODIFY `method_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -136,7 +171,7 @@ ALTER TABLE `staff`
 -- Constraints for table `orders`
 --
 ALTER TABLE `orders`
-  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`payment_method`) REFERENCES `payment_method` (`method_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
