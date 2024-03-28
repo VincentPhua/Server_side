@@ -3,6 +3,8 @@
 // Need DB file connection
 include ("auth.php");
 require ('database.php');
+// Set the default timezone to your desired timezone
+date_default_timezone_set('Asia/Singapore');
 
 $status = '';
 
@@ -18,26 +20,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Image upload
     $targetDir = "uploads/";
-    $targetFile = $targetDir . basename($_FILES["image"]["name"]);
-    $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+    $uploadedFileName = $_FILES['image']['name'];
+    $targetFile = $targetDir . $uploadedFileName;
+    $imageFileType = strtolower(pathinfo($uploadedFileName, PATHINFO_EXTENSION));
 
     // Check if image file is a valid format
     if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
         $status = "Sorry, only JPG and PNG files are allowed.";
     } else {
-        // Move uploaded file to destination directory
-        if (move_uploaded_file($_FILES["image"]["tmp_name"], $targetFile)) {
-            $image_name = basename($_FILES["image"]["name"]);
+        // Move uploaded file to destination directory only if it doesn't exist
+        if (!file_exists($targetFile)) {
+            if (move_uploaded_file($_FILES["image"]["tmp_name"], $targetFile)) {
 
-            // Insert product data into database
-            $ins_query = "INSERT INTO products (product_name, description, image_name, price, quantity, date_created, submittedby) 
-                          VALUES ('$product_name','$description', '$image_name', '$price', '$quantity', '$date_record', '$submittedby')";
-            mysqli_query($con, $ins_query) or die (mysqli_error($con));
+                // Insert product data into database
+                $ins_query = "INSERT INTO products (product_name, description, image_name, price, quantity, date_created, submittedby) 
+                          VALUES ('$product_name','$description', '$uploadedFileName', '$price', '$quantity', '$date_record', '$submittedby')";
+                mysqli_query($con, $ins_query) or die (mysqli_error($con));
 
-            // Status message
-            $status = "New product inserted successfully. Go back to <a href='view_products.php'>View Product List</a> ?";
+                // Status message
+                $status = "New product inserted successfully. Go back to <a href='view_products.php'>View Product List</a> ?";
+            } else {
+                $status = "Sorry, there was an error uploading your file.";
+            }
         } else {
-            $status = "Sorry, there was an error uploading your file.";
+            $status = "File already exists. Please choose a different file.";
         }
     }
 }
