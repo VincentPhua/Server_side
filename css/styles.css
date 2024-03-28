@@ -18,7 +18,6 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    min-height: 100vh;
     background-color: #f5f9ff;
     display: flex;
     justify-content: center;
@@ -188,6 +187,7 @@ h1.staff-page {
 }
 
 .container {
+    position: relative;
     text-align: center;
     padding: 20px 0;
 }
@@ -202,8 +202,8 @@ h1.staff-page {
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 40px; /* Increased padding */
-    width: 400px; /* Increased width */
+    padding: 40px; 
+    width: 350px; 
 }
 
 .card h2 {
@@ -218,7 +218,7 @@ h1.staff-page {
     display: block;
     color: #007bff;
     text-decoration: none;
-    margin-top: 20px; /* Increased margin */
+    margin-top: 20px; 
 }
 
 .card a:hover {
@@ -227,7 +227,10 @@ h1.staff-page {
 
 .logout-link {
     text-align: center;
-    margin-top: 30px; /* Adjust as needed */
+    margin-top: 30px; 
+    position: absolute;
+    top: 15px;
+    right: 5px;
 }
 
 .logout-link button {
@@ -241,6 +244,14 @@ h1.staff-page {
 
 .logout-link button:hover {
     background-color: #0056b3;
+}
+
+.graph-container {
+    width: 100%; 
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fff;
 }
 
 /* ------------------------------view_products.php -------------------------------------------*/
@@ -337,17 +348,21 @@ h1.staff-page {
 
 /* CSS for the table */
 .view-product-table {
-    width: 100%;
-    height: 100vh; /* Set height to 100% of viewport height */
+    width: 90%;
+    height: 90vh; /* Set height to 100% of viewport height */
     overflow-y: auto; /* Add vertical scrollbar if content exceeds viewport height */
     border-collapse: separate;
     border-spacing: 0;
 }
 
-.view-product-table th,
+.view-product-table th{
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
 .view-product-table td {
     padding: 15px;
-    text-align: left;
+    text-align: center;
     border-bottom: 1px solid #ddd;
 }
 
@@ -361,8 +376,8 @@ h1.staff-page {
 
 .create-product-btn {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 50px;
+    right: 100px;
     padding: 10px 20px;
     font-size: 16px;
     background-color: #24A0ED;
@@ -436,7 +451,7 @@ h1.staff-page {
     color: #FF0000;
     text-align: center;
     margin-top: 10px;
-    padding: 10px;
+    padding: 10px  ;
 }
 
 .back-button {
