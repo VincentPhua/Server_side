@@ -1,4 +1,4 @@
-/* Login.php */
+/* -------------------------------Login.php---------------------------------------------- */
 /* Custom Styles */
 :root {
     --custom-text-dark: hsl(240, 54%, 15%);
@@ -18,7 +18,6 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    min-height: 100vh;
     background-color: #f5f9ff;
     display: flex;
     justify-content: center;
@@ -31,17 +30,23 @@ body {
     max-width: 1500px;
     width: 100%;
     display: flex;
-    justify-content: center; /* Center the content horizontally */
-    align-items: center; /* Center the content vertically */
+    justify-content: center;
+    /* Center the content horizontally */
+    align-items: center;
+    /* Center the content vertically */
     margin-inline: 1rem;
-    height: 100vh; /* Set the height of the container to the full viewport height */
+    height: 100vh;
+    /* Set the height of the container to the full viewport height */
 }
 
 .custom-image-section {
-    width: 50%; /* Set the width to 50% */
+    width: 50%;
+    /* Set the width to 50% */
     position: relative;
-    overflow: hidden; /* Ensure the content does not overflow */
-    height: 100%; /* Set the height to match the container */
+    overflow: hidden;
+    /* Ensure the content does not overflow */
+    height: 100%;
+    /* Set the height to match the container */
 }
 
 
@@ -59,7 +64,8 @@ body {
 }
 
 .custom-content-container {
-    background-color: hsla(0, 0%, 100%, 0.3); /* Using hsla for background */
+    background-color: hsla(0, 0%, 100%, 0.3);
+    /* Using hsla for background */
     backdrop-filter: blur(30px);
     padding: 2rem;
     color: var(--custom-text-dark);
@@ -69,7 +75,8 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 1; /* Ensures text appears on top of the image */
+    z-index: 1;
+    /* Ensures text appears on top of the image */
 }
 
 @media screen and (max-width: 60rem) {
@@ -95,14 +102,18 @@ body {
 }
 
 .custom-form-section {
-    width: 50%; /* Set the width to 50% to match the picture */
-    height: 100%; /* Set the height to match the container */
+    width: 50%;
+    /* Set the width to 50% to match the picture */
+    height: 100%;
+    /* Set the height to match the container */
     background-color: white;
     padding: 2.5rem 1rem;
     display: flex;
     align-items: center;
-    justify-content: center; /* Center the content horizontally */
-    flex-direction: column; /* Stack form elements vertically */
+    justify-content: center;
+    /* Center the content horizontally */
+    flex-direction: column;
+    /* Stack form elements vertically */
 }
 
 .custom-form-wrapper {
@@ -160,7 +171,8 @@ footer {
     bottom: 0;
     width: 100%;
     left: 0;
-    z-index: 1; /* Ensures footer appears on top of the image */
+    z-index: 1;
+    /* Ensures footer appears on top of the image */
 }
 
 p {
@@ -168,14 +180,14 @@ p {
     margin-top: 20px;
 }
 
-/* staff.php */
-
+/* ------------------------------------------------------------staff.php ------------------------------------------------------*/
 h1.staff-page {
     text-align: center;
     padding: 20px 0;
 }
 
 .container {
+    position: relative;
     text-align: center;
     padding: 20px 0;
 }
@@ -190,8 +202,8 @@ h1.staff-page {
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 40px; /* Increased padding */
-    width: 400px; /* Increased width */
+    padding: 40px; 
+    width: 350px; 
 }
 
 .card h2 {
@@ -206,7 +218,7 @@ h1.staff-page {
     display: block;
     color: #007bff;
     text-decoration: none;
-    margin-top: 20px; /* Increased margin */
+    margin-top: 20px; 
 }
 
 .card a:hover {
@@ -215,7 +227,10 @@ h1.staff-page {
 
 .logout-link {
     text-align: center;
-    margin-top: 30px; /* Adjust as needed */
+    margin-top: 30px; 
+    position: absolute;
+    top: 15px;
+    right: 5px;
 }
 
 .logout-link button {
@@ -229,4 +244,228 @@ h1.staff-page {
 
 .logout-link button:hover {
     background-color: #0056b3;
+}
+
+.graph-container {
+    width: 100%; 
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fff;
+}
+
+/* ------------------------------view_products.php -------------------------------------------*/
+/* CSS for sidebar */
+.sidenav {
+    height: 100%;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 20px;
+    color: white;
+    display: flex;
+    /* Change to flex container */
+    flex-direction: column;
+}
+
+.sidenav h2 {
+    font-size: 24px;
+    /* Increase font size for "Staff" */
+    margin-bottom: 10px;
+    /* Add margin to bottom for separation */
+}
+
+.view-product-staff-info {
+    font-size: 18px;
+    /* Increase font size for staff name */
+    margin-bottom: 20px;
+    /* Add margin to bottom for separation */
+    padding: 10px;
+}
+
+.sidenav hr {
+    border-color: #818181;
+    /* Set color for line */
+    margin: 10px 0;
+    /* Add margin around the line */
+    color: white;
+}
+
+.sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    /* Decrease font size for links */
+    color: #818181;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.view-product-dashboard,
+.view-product-orders {
+    color: white;
+    /* Make dashboard and orders white */
+}
+
+.view-product-logout-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #24A0ED;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    position: absolute;
+    bottom: 20px;
+    left: 25%;
+}
+
+.view-product-logout-button:hover {
+    background-color: #45a049;
+}
+
+/* CSS for main content */
+.main {
+    margin-left: 200px; 
+    padding: 20px;
+    font-size: 28px;
+}
+
+.main-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px; /* Add margin to separate from the table */
+}
+
+/* CSS for the table */
+.view-product-table {
+    width: 90%;
+    height: 90vh; /* Set height to 100% of viewport height */
+    overflow-y: auto; /* Add vertical scrollbar if content exceeds viewport height */
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.view-product-table th{
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+.view-product-table td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.view-product-table th {
+    background-color: transparent;
+}
+
+.view-product-table tbody tr:hover {
+    background-color: #e2e2e2;
+}
+
+.create-product-btn {
+    position: absolute;
+    top: 50px;
+    right: 100px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #24A0ED;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.create-product-btn:hover {
+    background-color: #45a049;
+}
+
+.admin-image-container {
+    padding: 20px; /* Adjust the padding as needed */
+}
+
+.admin-image {
+    max-width: 100%;
+    height: auto;
+}
+
+.product-image {
+    max-width: 100px; /* Adjust the max-width as needed */
+    max-height: 100px; /* Adjust the max-height as needed */
+}
+
+
+/*--------------------------------create_product.php--------------------------------------------*/
+.create-product-container {
+    margin: 50px auto;
+    max-width: 500px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.create-product-title {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.create-product-form input[type="text"],
+.create-product-form input[type="number"],
+.create-product-form input[type="file"],
+.create-product-form input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.create-product-form input[type="submit"] {
+    background-color: #24A0ED;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.create-product-form input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.create-product-status {
+    color: #FF0000;
+    text-align: center;
+    margin-top: 10px;
+    padding: 10px  ;
+}
+
+.back-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #24A0ED; /* Blue color */
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    transition: background-color 0.3s; /* Smooth transition for background color */
+}
+
+.back-button:hover {
+    background-color: #45a049; /* Green color on hover */
 }
