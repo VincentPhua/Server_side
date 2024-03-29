@@ -1,7 +1,9 @@
 <?php
 ob_start();
+
 session_start();
 $_SESSION['last_timestamp'] = time();
+
 ?>
 
 <!DOCTYPE html>
@@ -63,7 +65,7 @@ $_SESSION['last_timestamp'] = time();
         <section class="custom-container">
             <div class="custom-image-section">
                 <div class="custom-image-wrapper">
-                    <img src="Image/I1.jpg" alt="">
+                    <img src="imgs/staff/I1.jpg" alt="">
                 </div>
 
                 <div class="custom-content-container">
@@ -97,7 +99,7 @@ $_SESSION['last_timestamp'] = time();
                     </form> <!-- Closing form element -->
                     <p></p>
                     <p></p>
-                    <p>Go Back to Main Page? <a href='index.html.php'>Main Page</a></p>
+                    <p>Go Back to Main Page? <a href='index.php'>Main Page</a></p>
                 </div>
             </div>
         </section>
