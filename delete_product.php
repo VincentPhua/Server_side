@@ -15,7 +15,7 @@ $result = mysqli_query($con, $query) or die (mysqli_error($con));
 
 // Delete image file from the upload folder
 if (!empty ($imageFileName)) {
-    $filePath = "uploads/" . $imageFileName;
+    $filePath = "imgs/" . $imageFileName;
     if (file_exists($filePath)) {
         unlink($filePath); // Delete the file
     }
