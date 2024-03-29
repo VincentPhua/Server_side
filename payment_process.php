@@ -145,10 +145,22 @@ $subtotal = $_SESSION['subtotal'];
             . "'" . $method_id . "'"
             . ");";
         if (mysqli_query($con, $query)) {
+            $order_id = mysqli_insert_id($con);
             foreach ($products as $product) {
                 $query = "UPDATE `products`
                 SET `quantity` = `quantity` - " . $products_in_cart[$product['product_id']]
                     . " WHERE `product_id` = " . $product['product_id'] . ";";
+                mysqli_query($con, $query);
+
+                $query = "INSERT INTO `order_items` (
+                    order_id,
+                    product_id,
+                    quantity
+                    ) VALUES ("
+                    . "'" . $order_id . "',"
+                    . "'" . $product['product_id'] . "',"
+                    . "'" . $products_in_cart[$product['product_id']] . "'"
+                    . ");";
                 mysqli_query($con, $query);
             };
             header("Location: index.php?page=payment_success");
