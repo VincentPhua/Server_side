@@ -326,6 +326,22 @@ main .cart .buttons input[type="submit"]:hover {
 	background: #434f61;
 }
 
+main .cart .cancel-button {
+    display: inline-block;
+    padding: 10px 17px;
+    background-color: #860000;
+    color: white;
+    text-align: center;
+    text-decoration:wavy;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+main .cart .cancel-button:hover {
+    background-color: #a23e3e;
+}
+
 main .cart .payment-button {
     display: inline-block;
     padding: 10px 17px;
