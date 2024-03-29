@@ -1,11 +1,12 @@
-<?= template_header('Payment') ?>
-
 <?php
 require("database.php");
+ob_start();
 $products_in_cart = isset($_SESSION['cart']) ? $_SESSION['cart'] : array();
 $products = $_SESSION['to_pay'];
 $subtotal = $_SESSION['subtotal'];
 ?>
+
+<?= template_header('Payment') ?>
 
 <!DOCTYPE html>
 <html>
@@ -33,7 +34,7 @@ $subtotal = $_SESSION['subtotal'];
                     <tr>
                         <td class="img">
                             <a href="index.php?page=product&id=<?= $product['product_id'] ?>">
-                                <img src="imgs/<?= $product['image_name'] ?>" width="70" height="70" alt="<?= $product['product_name'] ?>">
+                                <img src="imgs/<?=$product['image_name']?>" width="70" height="70" alt="<?=$product['product_name']?>">
                             </a>
                         </td>
                         <td>
@@ -150,7 +151,7 @@ $subtotal = $_SESSION['subtotal'];
                     . " WHERE `product_id` = " . $product['product_id'] . ";";
                 mysqli_query($con, $query);
             };
-            header("Location: payment_success.php");
+            header("Location: index.php?page=payment_success");
         }
     }; ?>
 </body>
