@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $submittedby = $_SESSION["staff_name"];
 
     // Image upload
-    $targetDir = "uploads/";
+    $targetDir = "imgs/";
     $uploadedFileName = $_FILES['image']['name'];
     $targetFile = $targetDir . $uploadedFileName;
     $imageFileType = strtolower(pathinfo($uploadedFileName, PATHINFO_EXTENSION));
