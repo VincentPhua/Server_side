@@ -65,6 +65,7 @@ mysqli_close($con);
 
 <head>
     <meta charset="utf-8">
+    <meta http-equiv="refresh" content="300">
     <title>Update Product</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
