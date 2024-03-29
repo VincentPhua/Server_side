@@ -6,7 +6,7 @@ if (isset($_POST['product_id'], $_POST['quantity']) && is_numeric($_POST['produc
     $product_id = (int)$_POST['product_id'];
     $quantity = (int)$_POST['quantity'];
     // Prepare the SQL statement, we basically are checking if the product exists in our databaser
-    $stmt = $pdo->prepare('SELECT * FROM products WHERE id = ?');
+    $stmt = $pdo->prepare('SELECT * FROM products WHERE product_id = ?');
     $stmt->execute([$_POST['product_id']]);
     // Fetch the product from the database and return the result as an Array
     $product = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -42,7 +42,6 @@ if (isset($_GET['remove']) && is_numeric($_GET['remove']) && isset($_SESSION['ca
     // Remove the product from the shopping cart
     unset($_SESSION['cart'][$_GET['remove']]);
 }
-
 
 // Update product quantities in cart if the user clicks the "Update" button on the shopping cart page
 if (isset($_POST['update']) && isset($_SESSION['cart'])) 
@@ -85,7 +84,7 @@ if ($products_in_cart)
 {
     // There are products in the cart so we need to select those products from the database
     $array_to_question_marks = implode(',', array_fill(0, count($products_in_cart), '?'));
-    $stmt = $pdo->prepare('SELECT * FROM products WHERE id IN (' . $array_to_question_marks . ')');
+    $stmt = $pdo->prepare('SELECT * FROM products WHERE product_id IN (' . $array_to_question_marks . ')');
     // We only need the array keys, not the values, the keys are the id's of the products
     $stmt->execute(array_keys($products_in_cart));
     // Fetch the products from the database and return the result as an Array
@@ -93,9 +92,11 @@ if ($products_in_cart)
     // Calculate the subtotal
     foreach ($products as $product) 
     {
-        $subtotal += (float)$product['price'] * (int)$products_in_cart[$product['id']];
+        $subtotal += (float)$product['price'] * (int)$products_in_cart[$product['product_id']];
     }
 }
+// Set the products to pay
+$_SESSION['to_pay'] = $products;
 // Set the subtotal in session variable
 $_SESSION['subtotal'] = $subtotal;
 ?>
@@ -103,7 +104,8 @@ $_SESSION['subtotal'] = $subtotal;
 <?=template_header('Cart')?>
 
 <div class="cart content-wrapper">
-    <h1>Shopping Cart</h1>
+    <h1><?php echo ((isset($_SESSION['cart']) && count($_SESSION['cart']) > 0)? "Shopping Cart" : "It seems like your cart is empty...") ?></h1>
+    <p><i>Press the refresh button to refresh your prices!</i></p>
     <form action="index.php?page=cart" method="post">
         <table>
             <thead>
@@ -123,20 +125,20 @@ $_SESSION['subtotal'] = $subtotal;
                 <?php foreach ($products as $product): ?>
                 <tr>
                     <td class="img">
-                        <a href="index.php?page=product&id=<?=$product['id']?>">
-                            <img src="imgs/<?=$product['img']?>" width="70" height="70" alt="<?=$product['name']?>">
+                        <a href="index.php?page=product&id=<?=$product['product_id']?>">
+                            <img src="imgs/<?=$product['image_name']?>" width="70" height="70" alt="<?=$product['product_name']?>">
                         </a>
                     </td>
                     <td>
-                        <a href="index.php?page=product&id=<?=$product['id']?>"><?=$product['name']?></a>
+                        <a href="index.php?page=product&id=<?=$product['product_id']?>"><?=$product['product_name']?></a>
                         <br>
-                        <a href="index.php?page=cart&remove=<?=$product['id']?>" class="remove">Remove</a>
+                        <a href="index.php?page=cart&remove=<?=$product['product_id']?>" class="remove">Remove</a>
                     </td>
                     <td class="price">&dollar;<?=$product['price']?></td>
                     <td class="quantity">
-                        <input type="number" name="quantity-<?=$product['id']?>" value="<?=$products_in_cart[$product['id']]?>" min="1" max="<?=$product['quantity']?>" placeholder="Quantity" required>
+                        <input type="number" onchange="" name="quantity-<?=$product['product_id']?>" value="<?=$products_in_cart[$product['product_id']]?>" min="1" max="<?=$product['quantity']?>" placeholder="Quantity" required>
                     </td>
-                    <td class="price">&dollar;<?=$product['price'] * $products_in_cart[$product['id']]?></td>
+                    <td class="price">&dollar;<?=$product['price'] * $products_in_cart[$product['product_id']]?></td>
                 </tr>
                 <?php endforeach; ?>
                 <?php endif; ?>
@@ -147,8 +149,15 @@ $_SESSION['subtotal'] = $subtotal;
             <span class="price">&dollar;<?=$subtotal?></span>
         </div>
         <div class="buttons">
-            <input type="submit" value="Update" name="update">
-            <a href="index.php?page=payment&subtotal=<?= $subtotal ?>" class="payment-button">Payment</a>
+            <input type="submit" value="Refresh" name="update">
+            <?php 
+            $href = "index.php?page=products";
+            $text = "Click me to see products!";
+            if(isset($_SESSION['cart']) && count($_SESSION['cart']) > 0) {
+                $href = "index.php?page=payment_process";
+                $text = "Payment";
+             } ?>
+            <a href=<?php echo $href ?> class="payment-button"><?php echo $text ?></a>
 
         </div>
     </form>

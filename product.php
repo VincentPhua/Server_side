@@ -4,7 +4,7 @@
 if (isset($_GET['id'])) 
 {
     // Prepare statement and execute, prevents SQL injection
-    $stmt = $pdo->prepare('SELECT * FROM products WHERE id = ?');
+    $stmt = $pdo->prepare('SELECT * FROM products WHERE product_id = ?');
     $stmt->execute([$_GET['id']]);
     // Fetch the product from the database and return the result as an Array
     $product = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -19,12 +19,12 @@ if (isset($_GET['id']))
 }
 ?>
 
-<?=template_header('Product')?>
+<?=template_header($product['product_name'])?>
 
 <div class="product content-wrapper">
-    <img src="imgs/<?=$product['img']?>" width="500" height="500" alt="<?=$product['name']?>">
+    <img src="imgs/<?=$product['image_name']?>" width="500" height="500" alt="<?=$product['product_name']?>">
     <div>
-        <h1 class="name"><?=$product['name']?></h1>
+        <h1 class="name"><?=$product['product_name']?></h1>
         <span class="price">
             &dollar;<?=$product['price']?>
             <?php if ($product['rrp'] > 0): ?>
@@ -33,11 +33,11 @@ if (isset($_GET['id']))
         </span>
         <form action="index.php?page=cart" method="post">
             <input type="number" name="quantity" value="1" min="1" max="<?=$product['quantity']?>" placeholder="Quantity" required>
-            <input type="hidden" name="product_id" value="<?=$product['id']?>">
+            <input type="hidden" name="product_id" value="<?=$product['product_id']?>">
             <input type="submit" value="Add To Cart">
         </form>
         <div class="description">
-            <?=$product['desc']?>
+            <?=$product['description']?>
         </div>
     </div>
 </div>

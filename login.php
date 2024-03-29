@@ -1,6 +1,5 @@
 <?php
 ob_start();
-session_start();
 ?>
 
 <!DOCTYPE html>
@@ -58,7 +57,7 @@ session_start();
         <section class="custom-container">
             <div class="custom-image-section">
                 <div class="custom-image-wrapper">
-                    <img src="Image/I1.jpg" alt="">
+                    <img src="imgs/staff/I1.jpg" alt="">
                 </div>
 
                 <div class="custom-content-container">
@@ -92,7 +91,7 @@ session_start();
                     </form> <!-- Closing form element -->
                     <p></p>
                     <p></p>
-                    <p>Go Back to Main Page? <a href='index.html.php'>Main Page</a></p>
+                    <p>Go Back to Main Page? <a href='index.php'>Main Page</a></p>
                 </div>
             </div>
         </section>
