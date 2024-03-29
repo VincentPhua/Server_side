@@ -17,7 +17,7 @@ require ('database.php');
     <div class="container">
         <div id="sidenav" class="sidenav">
             <div class="admin-image-container">
-                <img src="Image/Admin.jpg" alt="Admin" class="admin-image">
+                <img src="imgs/staff/Admin.jpg" alt="Admin" class="admin-image">
             </div>
             <h2>Staff Page</h2>
             <div class="view-product-staff-info">
@@ -47,7 +47,8 @@ require ('database.php');
                         <th><strong>Product Name</strong></th>
                         <th><strong>Description</strong></th>
                         <th><strong>Price</strong></th>
-                        <th><strong>Quantity</strong></th>
+                        <th><strong>RRP</strong></th>
+                        <th><strong>Quantity</strong></th>                   
                         <th><strong>Date and Time Recorded</strong></th>
                         <th><strong>Edit</strong></th>
                         <th><strong>Delete</strong></th>
@@ -71,7 +72,7 @@ require ('database.php');
                                 <?php echo $count; ?>
                             </td>
                             <td align="center">
-                                <?php echo "<img src='uploads/" . $row["image_name"] . "' alt='Product Image' class='product-image'>"; ?>
+                                <?php echo "<img src='imgs/" . $row["image_name"] . "' alt='Product Image' class='product-image'>"; ?> 
                             </td>
                             <td align="center">
                                 <?php echo $row["product_name"]; ?>
@@ -83,18 +84,21 @@ require ('database.php');
                                 <?php echo $currencySymbol . $row["price"]; ?>
                             </td>
                             <td align="center">
+                                <?php echo $currencySymbol . $row["rrp"]; ?>
+                            </td>
+                            <td align="center">
                                 <?php echo $row["quantity"]; ?>
                             </td>
                             <td align="center">
                                 <?php echo $row["date_created"]; ?>
                             </td>
                             <td align="center">
-                                <a href="update.php?id=<?php echo $row["product_id"]; ?>"
+                                <a href="update_product.php?id=<?php echo $row["product_id"]; ?>"
                                     class="view-product-update-link">Update</a>
                             </td>
                             <td align="center">
                                 <!-- Delete link with confirmation -->
-                                <a href="delete.php?id=<?php echo $row["product_id"]; ?>"
+                                <a href="delete_product.php?id=<?php echo $row["product_id"]; ?>"
                                     onclick="return confirm('Are you sure you want to delete this product record?')"
                                     class="view-product-delete-link">Delete</a>
                             </td>
