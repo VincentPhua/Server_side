@@ -469,3 +469,79 @@ h1.staff-page {
 .back-button:hover {
     background-color: #45a049; /* Green color on hover */
 }
+
+/*--------------------------------------view_order.php--------------------------------------------*/
+.view-order-table {
+    width: 90%;
+    height: 90vh; /* Set height to 100% of viewport height */
+    overflow-y: auto; /* Add vertical scrollbar if content exceeds viewport height */
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.view-order-table th{
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+.view-order-table td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.view-order-table th {
+    background-color: transparent;
+}
+
+.view-order-table tbody tr:hover {
+    background-color: #e2e2e2;
+}
+
+/*--------------------------------------updateOrder.php--------------------------------------------*/
+
+.create-order-container {
+    margin: 50px auto;
+    max-width: 500px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.create-order-title {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.create-order-form input[type="text"],
+.create-order-form input[type="number"],
+.create-order-form input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.create-order-form input[type="submit"] {
+    background-color: #24A0ED;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.create-order-form input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.create-order-status {
+    color: #FF0000;
+    text-align: center;
+    margin-top: 10px;
+    padding: 10px  ;
+}
