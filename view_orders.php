@@ -30,7 +30,7 @@ require ('database.php');
                 </div>
                 <hr>
                 <a href="staff.php" class="view-product-dashboard">Dashboard</a>
-                <a href="view_orders.php" class="view-product-orders">Orders</a>
+                <a href="view_products.php" class="view-product">Products</a>
                 <form action="logout.php" method="post">
                 <button type="submit" class="view-product-logout-button">Logout</button>
                 </form>
@@ -38,7 +38,7 @@ require ('database.php');
 
             <div class="main">
                 <div class="main-header">
-                <h2>View Product Records</h2>
+                <h2>View Order Records</h2>
                 </div>
             <table class="view-order-table">
                 <thead>
