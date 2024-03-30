@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (move_uploaded_file($_FILES["image"]["tmp_name"], $targetFile)) {
 
                 // Insert product data into database
-                $ins_query = "INSERT INTO products (product_name, description, image_name, price, quantity, date_created, submittedby) 
+                $ins_query = "INSERT INTO products (`product_name`, `description`, `image_name`, `price`, `quantity`, `date_created`, `submittedby`) 
                           VALUES ('$product_name','$description', '$uploadedFileName', '$price', '$quantity', '$date_record', '$submittedby')";
                 mysqli_query($con, $ins_query) or die (mysqli_error($con));
 
@@ -47,6 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 }
+mysqli_close($con);
 ?>
 
 <!DOCTYPE html>

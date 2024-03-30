@@ -163,6 +163,7 @@ $subtotal = $_SESSION['subtotal'];
                     . ");";
                 mysqli_query($con, $query);
             };
+            mysqli_close($con);
             header("Location: index.php?page=payment_success");
         }
     }; ?>

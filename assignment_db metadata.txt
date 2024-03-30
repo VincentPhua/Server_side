@@ -21,6 +21,13 @@ Attribute:
 7) order_time datetime
 8) payment_method int 3 Foreign Key
 
+Table: orders_items
+
+Attribute:
+1) order_id int 11 Primary Key, Foreign Key
+2) product_id int 11 Primary Key, Foreign Key
+3) quantity int 11
+
 Table: payment_method
 
 Attribute:

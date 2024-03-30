@@ -17,6 +17,7 @@ if (isset($_GET['id']))
 {
     exit('Product does not exist!');
 }
+$pdo = NULL;
 ?>
 
 <?=template_header($product['product_name'])?>

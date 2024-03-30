@@ -22,5 +22,6 @@ if (!empty ($imageFileName)) {
 }
 // Redirect to view page after delete
 header("Location: view_products.php");
+mysqli_close($con);
 exit();
 ?>

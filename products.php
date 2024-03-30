@@ -14,6 +14,7 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // Get the total number of products
 $total_products = $pdo->query('SELECT * FROM products WHERE quantity > 0')->rowCount();
+$pdo = NULL;
 ?>
 
 <?=template_header('Products')?>

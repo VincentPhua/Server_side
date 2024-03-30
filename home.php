@@ -3,6 +3,7 @@
 $stmt = $pdo->prepare('SELECT * FROM products ORDER BY date_created DESC LIMIT 3');
 $stmt->execute();
 $latest_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$pdo = NULL;
 ?>
 
 <?=template_header('Home')?>

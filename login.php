@@ -60,6 +60,7 @@ $_SESSION['last_timestamp'] = time();
 				<h3>Username/password is incorrect.</h3>
 				<br/>Click here to <a href='login.php'>Login</a></div>";
         }
+        mysqli_close($con);
     } else {
         if (isset($_GET['session_expired']) && $_GET['session_expired'] == 1) {
             echo "<script>alert('Your session has expired. Please log in again.');</script>";

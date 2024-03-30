@@ -99,6 +99,7 @@ if ($products_in_cart)
 $_SESSION['to_pay'] = $products;
 // Set the subtotal in session variable
 $_SESSION['subtotal'] = $subtotal;
+$pdo = NULL;
 ?>
 
 <?=template_header('Cart')?>

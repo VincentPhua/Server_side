@@ -13,5 +13,6 @@ $query = "DELETE FROM orders WHERE order_id = $id";
 $result = mysqli_query($con, $query) or die (mysqli_error($con));
 
 header("Location: view_orders.php");
+mysqli_close($con);
 exit;
 ?>
