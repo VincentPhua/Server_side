@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $product_name = $_POST['product_name'];
     $description = $_POST['description'];
     $price = $_POST['price'];
-    $rrp = $_POST['rrp']; // Added RRP
+    $rrp = $_POST['rrp']; 
     $quantity = $_POST['quantity'];
     $date_record = date("Y-m-d H:i:s");
     $submittedby = $_SESSION["staff_name"];
@@ -90,7 +90,6 @@ mysqli_close($con);
             <label for="price">Price:</label>
             <input type="number" name="price" step="0.01" min="0" id="price" value="<?php echo $row['price']; ?>" placeholder="Price" required>
 
-            <!-- Add RRP input field -->
             <label for="rrp">RRP:</label>
             <input type="number" name="rrp" step="0.01" min="0" id="rrp" value="<?php echo $row['rrp']; ?>" placeholder="Recommended Retail Price" required>
 
