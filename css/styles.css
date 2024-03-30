@@ -336,7 +336,7 @@ h1.staff-page {
 .main {
     margin-left: 200px; 
     padding: 20px;
-    font-size: 28px;
+    font-size: 22px;
 }
 
 .main-header {
@@ -401,8 +401,8 @@ h1.staff-page {
 }
 
 .product-image {
-    max-width: 100px; /* Adjust the max-width as needed */
-    max-height: 100px; /* Adjust the max-height as needed */
+    max-width: 150px; /* Adjust the max-width as needed */
+    max-height: 150px; /* Adjust the max-height as needed */
 }
 
 

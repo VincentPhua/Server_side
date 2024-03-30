@@ -15,8 +15,6 @@ $salesData = array();
 while ($row = mysqli_fetch_assoc($salesResult)) {
     $salesData[] = array($row['order_date'], $row['total_sales']);
 }
-// echo $_SESSION['last_timestamp'];
-echo time() - $_SESSION['last_timestamp'];
 ?>
 
 <!DOCTYPE html>

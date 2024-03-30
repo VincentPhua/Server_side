@@ -1,6 +1,10 @@
 <?php
 ob_start();
-
+// Check if session is active
+if (session_status() == PHP_SESSION_ACTIVE) {
+    // Session is active, destroy it
+    session_destroy();
+}
 session_start();
 $_SESSION['last_timestamp'] = time();
 
