@@ -349,7 +349,7 @@ h1.staff-page {
 /* CSS for the table */
 .view-product-table {
     width: 90%;
-    height: 90vh; /* Set height to 100% of viewport height */
+    height: 100%; /* Set height to 100% of viewport height */
     overflow-y: auto; /* Add vertical scrollbar if content exceeds viewport height */
     border-collapse: separate;
     border-spacing: 0;
@@ -473,7 +473,7 @@ h1.staff-page {
 /*--------------------------------------view_order.php--------------------------------------------*/
 .view-order-table {
     width: 90%;
-    height: 90vh; /* Set height to 100% of viewport height */
+    height: 100%; /* Set height to 100% of viewport height */
     overflow-y: auto; /* Add vertical scrollbar if content exceeds viewport height */
     border-collapse: separate;
     border-spacing: 0;

@@ -46,7 +46,7 @@ $_SESSION['last_timestamp'] = time();
         ;
         $result = mysqli_query($con, $query) or die(mysqli_error($con));
         $rows = mysqli_num_rows($result);
-        // If user found, set session and redirect to index.php
+        // If user found, set session and redirect to staff.php
         if ($rows == 1) {
             $userData = mysqli_fetch_assoc($result);
             $_SESSION['staff_name'] = $userData['staff_name'];
