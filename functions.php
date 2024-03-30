@@ -62,7 +62,7 @@ function template_footer()
         </main>
         <footer>
             <div class="content-wrapper">
-                <p>&copy; $year, PALP STORE</p>
+                <p>&copy; $year, PALP STORE. All rights reserved.</p>
             </div>
         </footer>
     </body>
