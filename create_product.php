@@ -54,6 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <head>
     <meta charset="utf-8">
+    <meta http-equiv="refresh" content="300">
     <title>Create Product</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>

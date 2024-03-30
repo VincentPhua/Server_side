@@ -9,6 +9,7 @@ require ('database.php');
 
 <head>
     <meta charset="utf-8">
+    <meta http-equiv="refresh" content="300">
     <title>View Product Records</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>

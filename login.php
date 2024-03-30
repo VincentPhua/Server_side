@@ -1,5 +1,9 @@
 <?php
 ob_start();
+
+session_start();
+$_SESSION['last_timestamp'] = time();
+
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +27,7 @@ ob_start();
     require ('database.php');
 
     // Check if login form submitted
-    if (isset ($_POST['username'])) {
+    if (isset($_POST['username'])) {
         // Sanitize user input
         $username = stripslashes($_REQUEST['username']);
         $username = mysqli_real_escape_string($con, $username);
@@ -36,7 +40,7 @@ ob_start();
               WHERE staff_name='$username'
               AND password='" . md5($password) . "'"
         ;
-        $result = mysqli_query($con, $query) or die (mysqli_error($con));
+        $result = mysqli_query($con, $query) or die(mysqli_error($con));
         $rows = mysqli_num_rows($result);
         // If user found, set session and redirect to index.php
         if ($rows == 1) {
@@ -53,6 +57,10 @@ ob_start();
 				<br/>Click here to <a href='login.php'>Login</a></div>";
         }
     } else {
+        if (isset($_GET['session_expired']) && $_GET['session_expired'] == 1) {
+            echo "<script>alert('Your session has expired. Please log in again.');</script>";
+            session_destroy();
+        }
         ?>
         <section class="custom-container">
             <div class="custom-image-section">
